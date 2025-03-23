@@ -10,6 +10,10 @@ describe("Component CurrencyForm", () => {
 		{ amount: "345", from: "USD", to: "PLN" },
 	];
 
+	afterEach(() => {
+		cleanup();
+	});
+
 	for (const testObj of testCases) {
 		it(`should run action callback with proper data on form submit (amount: ${testObj.amount}, from: ${testObj.from}, to: ${testObj.to})`, () => {
 			const action = jest.fn();
@@ -40,9 +44,6 @@ describe("Component CurrencyForm", () => {
 				from: testObj.from,
 				to: testObj.to,
 			});
-
-			// cleanup after each test case
-			cleanup();
 		});
 	}
 });
